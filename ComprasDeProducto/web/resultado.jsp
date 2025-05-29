@@ -35,9 +35,9 @@
                     double total = producto.calcularTotal();
         %>
                     <p><strong>Producto:</strong> <%= producto.getNombre() %></p>
-                    <p><strong>Precio unitario:</strong> $<%= String.format("%.2f", producto.getPrecio()) %></p>
+                    <p><strong>Precio unitario:</strong> S/.<%= String.format("%.2f", producto.getPrecio()) %></p>
                     <p><strong>Cantidad:</strong> <%= producto.getCantidad() %></p>
-                    <p class="success"><strong>Total a pagar:</strong> $<%= String.format("%.2f", total) %></p>
+                    <p class="success"><strong>Total a pagar:</strong> S/.<%= String.format("%.2f", total) %></p>
         <%
                 }
             } catch (NumberFormatException e) {
