@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modelo.Producto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,16 +25,18 @@
                 double precio = Double.parseDouble(precioStr);
                 int cantidad = Integer.parseInt(cantidadStr);
                 
-                if (cantidad < 0) {
+                Producto producto = new Producto(nombre, precio, cantidad);
+                
+                if (!producto.cantidadValida()) {
         %>
                     <p class="error">Lo siento, ingrese una cantidad positiva.</p>
         <%
                 } else {
-                    double total = precio * cantidad;
+                    double total = producto.calcularTotal();
         %>
-                    <p><strong>Producto:</strong> <%= nombre %></p>
-                    <p><strong>Precio unitario:</strong> $<%= String.format("%.2f", precio) %></p>
-                    <p><strong>Cantidad:</strong> <%= cantidad %></p>
+                    <p><strong>Producto:</strong> <%= producto.getNombre() %></p>
+                    <p><strong>Precio unitario:</strong> $<%= String.format("%.2f", producto.getPrecio()) %></p>
+                    <p><strong>Cantidad:</strong> <%= producto.getCantidad() %></p>
                     <p class="success"><strong>Total a pagar:</strong> $<%= String.format("%.2f", total) %></p>
         <%
                 }
